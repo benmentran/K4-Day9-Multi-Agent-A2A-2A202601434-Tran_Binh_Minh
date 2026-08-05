@@ -1,30 +1,32 @@
 {
   "task": "K4 Day 9 - Multi-Agent E-commerce Dispute Resolution",
-  "framework": "LiteLLM + custom Python orchestrator + pandas",
+  "framework": "LiteLLM + custom Python orchestrator + pandas + pydantic",
   "models": {
     "coordinator": "gpt-4o-mini",
-    "customer": "deterministic (no LLM)",
-    "order_product": "deterministic (no LLM)",
-    "payment": "deterministic (no LLM)",
-    "delivery": "deterministic (no LLM)",
-    "policy": "deterministic (no LLM)",
-    "verifier": "gpt-4o-mini"
+    "policy": "gpt-4o-mini",
+    "customer": "gpt-4.1-nano",
+    "order_product": "gpt-4.1-nano",
+    "payment": "gpt-4.1-nano",
+    "delivery": "gpt-4.1-nano",
+    "verifier": "gpt-4.1-nano"
   },
   "param_estimates": {
-    "gpt-4o-mini": "~8B"
+    "gpt-4o-mini": "~8B",
+    "gpt-4.1-nano": "~1-2B"
   },
   "model_selection_rationale": {
-    "customer": "Pure CSV lookup — extract customer_unique_id and related orders by join, no LLM needed",
-    "order_product": "Pure CSV join — items/sellers/products/categories extracted deterministically",
-    "payment": "Pure arithmetic — reconcile_payment() handles all totals with 0.10 BRL tolerance",
-    "delivery": "Pure datetime math — compute_delivery_variance() and compute_handoff_variances()",
-    "policy": "Deterministic rule engine — EC_POLICY_V2 priority order implemented as Python conditionals; LLM hallucination risk eliminated",
-    "verifier": "gpt-4o-mini for schema correction — handles edge cases not caught by structural validation"
+    "coordinator": "Most complex synthesis; final JSON assembly, orchestration, trace management",
+    "policy": "Most complex rule reasoning: taxonomy, responsibility, refund calc, action sequencing",
+    "customer": "Simple identity lookup + customer history; mechanical, low reasoning load",
+    "order_product": "Data extraction from items/sellers/products/categories; mechanical",
+    "payment": "Payment aggregation + reconciliation; deterministic arithmetic via tools",
+    "delivery": "Variance computation; deterministic via tools",
+    "verifier": "Schema/limit/checksum validation; mechanical checks"
   },
   "design_principle": "Do not trust the customer claim — join and verify all facts from CSV before applying policy",
-  "runtime": "Python 3.13, Windows",
+  "runtime": "Python 3.13.12, Windows",
   "total_cases": 50,
-  "api_providers": ["openai"],
+  "api_providers": ["openai", "gemini"],
   "policy_version": "EC_POLICY_V2",
   "dataset": "Olist Brazilian E-Commerce Public Dataset"
 }
