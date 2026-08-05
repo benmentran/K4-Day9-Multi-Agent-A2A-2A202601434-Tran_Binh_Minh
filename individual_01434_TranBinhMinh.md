@@ -6,11 +6,11 @@
 
 | Thông tin       | Nội dung     |
 | --------------- | ------------ |
-| Họ và tên       | [Họ và tên]  |
-| MSSV            | [MSSV]       |
+| Họ và tên       | Trần Bình Minh|
+| MSSV            | 2A202601434  |
 | Khóa/Lớp        | [K4]         |
-| Vai trò chính   | [Vai trò]    |
-| Ngày hoàn thành | [YYYY-MM-DD] |
+| Vai trò chính   | owner        |
+| Ngày hoàn thành | 05-08-2025   |
 
 ## 2. Vai trò và phạm vi công việc
 
@@ -117,5 +117,5 @@ Giải thích ngắn gọn bằng lời của bạn:
 - [ ] Báo cáo không chứa `.env`, API key, token hoặc secret.
 - [ ] Báo cáo này không phải bản sao nguyên văn của báo cáo nhóm hoặc báo cáo thành viên khác.
 
-**Họ và tên:** [Họ và tên]
-**Ngày xác nhận:** [YYYY-MM-DD]
+**Họ và tên:** Trần Bình Minh
+**Ngày xác nhận:** 05/08/2026
